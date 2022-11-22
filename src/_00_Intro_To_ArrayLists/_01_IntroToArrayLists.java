@@ -34,10 +34,23 @@ for (int i = list1.size()-1; i >=0; i--) {
 }
         // 7. Print only the Strings that have the letter 'e' in them.
 for (int i = 0; i < list1.size(); i++) {
-	String yeet = list1.get(i);
-	if(yeet) {
-	System.out.println(yeet);
+	String Class = list1.get(i);
+	int l = Class.length();
+		if(Class.contains("e")) {
+			System.out.println(Class);
 	}
+	
 }  
+
+//for (int i = 0; i < list1.size(); i++) {
+//	String Class = list1.get(i);
+//	int l = Class.length();
+//	for (int j = 0; j < i; j++) {
+//		if(Class.charAt(i) == 'e') {
+//			System.out.println(Class);
+//			}	
+//	}
+	
+//}  
     }
 }
