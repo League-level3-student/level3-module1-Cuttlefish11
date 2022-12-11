@@ -1,5 +1,9 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.util.HashMap;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class _02_LogSearch {
     /*
@@ -33,5 +37,9 @@ public class _02_LogSearch {
      *      If this ID exists in the HashMap, remove it. Otherwise, notify the
      *      user that the ID is not in the list.
      */
+	HashMap<Integer,String> intring= new HashMap<Integer,String>();
+	JFrame frame = new JFrame();
+	JPanel panel = new JPanel();
+	
 
 }
