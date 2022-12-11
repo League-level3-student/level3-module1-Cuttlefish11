@@ -50,44 +50,48 @@ public class GameBoard extends JFrame implements ActionListener {
 		// of the Card objects to the ArrayList of Cards.
 		for (int i = 0; i < TOTAL_CARDS; i++) {
 			Card c;
-			if (i<5) {
+			if (i<4) {
 				c = new Card(1);	
 			}
-			else if (i<9){
+			else if (i<8){
 				c = new Card(2);	
 			}
-			else if (i<13){
+			else if (i<12){
 				c = new Card(3);	
 			}
-			else if (i<17){
+			else if (i<16){
 				c = new Card(4);	
 			}
-			else if (i<21){
+			else if (i<20){
 				c = new Card(5);	
 			}
-			else if (i<25){
+			else if (i<24){
 				c = new Card(6);	
 			}
-			else if (i<29){
+			else if (i<28){
 				c = new Card(7);	
 			}
-			else if (i<33){
+			else if (i<32){
 				c = new Card(8);	
 			}
-			else if (i<37){
+			else if (i<36){
 				c = new Card(9);	
 			}
-			else if (i<41){
+			else if (i<40){
 				c = new Card(10);	
+				c.setFaceUpIcon("13.png");
 			}
-			else if (i<45){
+			else if (i<44){
 				c = new Card(11);	
+				c.setFaceUpIcon("11.png");
 			}
-			else if (i<49){
+			else if (i<48){
 				c = new Card(12);	
+				c.setFaceUpIcon("8.png");
 			}
-			else(i<53){
-				c = new Card(13);	
+			else {
+				c = new Card(13);
+				c.setFaceUpIcon((i+1)+"1.png");
 			}
 			c.addActionListener(this);
 			cards.add(c);
