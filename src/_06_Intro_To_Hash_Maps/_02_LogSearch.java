@@ -1,7 +1,9 @@
 package _06_Intro_To_Hash_Maps;
 
+import java.awt.event.ActionEvent;
 import java.util.HashMap;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -40,6 +42,22 @@ public class _02_LogSearch {
 	HashMap<Integer,String> intring= new HashMap<Integer,String>();
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
+	JButton b1 = new JButton();
+	JButton b3 = new JButton();
+	JButton b2 = new JButton();
 	
-
+	void LogSearch(){
+		panel.add(b1);
+		panel.add(b2);
+		panel.add(b3);
+		frame.add(panel);
+		b1.addActionListener(this);
+		frame.setVisible(true);
+		frame.pack();
+	
+	}
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

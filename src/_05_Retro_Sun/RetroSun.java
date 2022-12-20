@@ -1,6 +1,7 @@
 package _05_Retro_Sun;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 import processing.core.PApplet;
 
@@ -13,8 +14,8 @@ import processing.core.PApplet;
 public class RetroSun extends PApplet {
 	static final int WIDTH = 800;
 	static final int HEIGHT = 600;
-	int y2 = 300;
-	int height = 35;
+	int y2 = 450;
+	int height = 70;
 	int radius = 200;
 
 	// RGB colors
@@ -106,8 +107,7 @@ public class RetroSun extends PApplet {
 		 */
 
 		// Set the fill color to the background color
-		y2--;
-		height--;
+
 	fill(bgColor);
 	rect(200,y2,400,height); 
 		// To draw each rectangle we need to find its x, y, width, height
@@ -132,14 +132,19 @@ public class RetroSun extends PApplet {
 		// Decrease the y variable of the rectangular section created in PART 3.
 		// If there isn't a variable, declare a float variable OUTSIDE of the
 		// draw function AND initialize it in the setup() function.
-
+	y2-=1.9;
+	height-=0.25;
 		// Do you see the rectangle moving upwards?
 
 		// Pick a y positon to be the location when the sections stop moving up.
 		// If the rectangle's y positon is above this, move the rectangle's
 		// y position back to the bottom of the sun.
+if(y2 < 225) {
+	y2=450;
+	height = 70;
+}
 
-		// Does the rectangle move back to the bottom?
+// Does the rectangle move back to the bottom?
 
 		// Decrease the the height of the rectangle as it moves upwards.
 		// Similar to the y positon, a float variable for the height needs to be
@@ -156,20 +161,25 @@ public class RetroSun extends PApplet {
 		 * PART 5: Managing the missing sun sections
 		 *
 		 * Using a list to manage moving multiple missing sun sections
-		 */
+		 
 
 		// Figure out how to create the other missing sun sections using the
 		// code you wrote for the 1 missing sun section.
 		// HINT: You can use the Rectangle class defined below to create
 		// a list of Rectangles.
-
 		/*
 		 * PART 6: Adding extras
 		 *
 		 * If you want to make your retro sun look more unique, try adding reflections
 		 * and stars. See RetroSun.html in this folder for some example classes
 		 */
+	ArrayList <Rectangle> rects = new ArrayList <Rectangle>();
+	for (Rectangle rectangle : rects) {
+		rectangle = new Rectangle(200,y2,400,height);
+	}
 	
+	//y2-=1.9;
+	//height-=0.25;
 	}
 	public static void main(String[] passedArgs) {
 		PApplet.main(RetroSun.class.getName());
