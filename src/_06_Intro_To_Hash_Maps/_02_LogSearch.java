@@ -1,13 +1,15 @@
 package _06_Intro_To_Hash_Maps;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class _02_LogSearch {
+public class _02_LogSearch implements ActionListener {
     /*
      * Crate a HashMap of Integers for the keys and Strings for the values.
      * Create a GUI with three buttons.
@@ -45,19 +47,47 @@ public class _02_LogSearch {
 	JButton b1 = new JButton();
 	JButton b3 = new JButton();
 	JButton b2 = new JButton();
+	JButton b4 = new JButton();
 	
-	void LogSearch(){
+	
+	_02_LogSearch(){
 		panel.add(b1);
 		panel.add(b2);
 		panel.add(b3);
+		panel.add(b4);
 		frame.add(panel);
 		b1.addActionListener(this);
+		b2.addActionListener(this);
+		b1.addActionListener(this);
+		b4.addActionListener(this);
+		b1.setText("add element");
+		b2.setText("search list");
+		b3.setText("present list");
+		b4.setText("delete element");
 		frame.setVisible(true);
 		frame.pack();
 	
 	}
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
-	}
+		if(e.getSource()==b1){
+		String IDK= JOptionPane.showInputDialog("Enter an ID number.");	
+		int ID = Integer.parseInt(IDK);
+		String name = JOptionPane.showInputDialog("Enter the name of the person who has said ID number.");	
+		intring.put(ID, name);
+		}
+		if(e.getSource()==b2){
+			String search = JOptionPane.showInputDialog("Enter an ID number. This will tell you who has that number.");	
+			if(intring.get(search) != null) {
+				JOptionPane.showMessageDialog(null, "That ID number is not in the list");
+			}
+				else {
+					
+					JOptionPane.showMessageDialog(null, "Their name is " + intring.get(search));
+				}
+			}
+			}
+
+
+
 }
