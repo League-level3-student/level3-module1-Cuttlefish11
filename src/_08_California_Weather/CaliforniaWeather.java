@@ -1,6 +1,13 @@
 package _08_California_Weather;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /*
  * OBJECTIVE:
@@ -27,19 +34,51 @@ import java.util.HashMap;
  * temperature, you can get a free API key at: https://openweathermap.org/api
  */
 
-public class CaliforniaWeather {
-    
+public class CaliforniaWeather implements ActionListener {
+	JFrame frame;
+    JPanel panel;
+    JButton b1;
+    JButton b2;
+    JButton b3;
+    HashMap<String, WeatherData> weatherData;
     void start() {
-        HashMap<String, WeatherData> weatherData = Utilities.getWeatherData();
-        
+     weatherData = Utilities.getWeatherData();
+        frame.setVisible(true);
+        frame.add(panel);
+        panel.add(b1);
+        panel.add(b2);
+        panel.add(b3);
+        b1.setText("Check a city's weather conditions");
+        b2.setText("Check which cities have a certain kind of weather");
+        b3.setText("Check which cities are within a certain temperature range");   
+        frame.pack();
+        b1.addActionListener(this);
+        b2.addActionListener(this);
+        b3.addActionListener(this);
         // All city keys have the first letter capitalized of each word
-        String cityName = Utilities.capitalizeWords( "National City" );
+       /* String cityName = Utilities.capitalizeWords( "National City" );
         WeatherData datum = weatherData.get(cityName);
         
         if( datum == null ) {
             System.out.println("Unable to find weather data for: " + cityName);
         } else {
             System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
-        }
+            }
+        */
     }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(e.getSource()==b1) {
+			String cityName= JOptionPane.showInputDialog( "Input the part of San Diego you want to know the weather of.");
+			//cityName = Utilities.capitalizeWords( cityName);
+	        WeatherData datum = weatherData.get(cityName);
+	        
+	        if( datum == null ) {
+	            System.out.println("Unable to find weather data for: " + cityName);
+	        } else {
+	            System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+	            }
+		}
+	}
 }
