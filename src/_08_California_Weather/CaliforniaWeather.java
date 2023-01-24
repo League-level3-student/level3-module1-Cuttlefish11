@@ -2,6 +2,7 @@ package _08_California_Weather;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.JButton;
@@ -35,11 +36,11 @@ import javax.swing.JPanel;
  */
 
 public class CaliforniaWeather implements ActionListener {
-	JFrame frame;
-    JPanel panel;
-    JButton b1;
-    JButton b2;
-    JButton b3;
+	JFrame frame = new JFrame();
+    JPanel panel = new JPanel();
+    JButton b1 = new JButton();
+    JButton b2 = new JButton();
+    JButton b3 =new JButton();
     HashMap<String, WeatherData> weatherData;
     void start() {
      weatherData = Utilities.getWeatherData();
@@ -75,10 +76,29 @@ public class CaliforniaWeather implements ActionListener {
 	        WeatherData datum = weatherData.get(cityName);
 	        
 	        if( datum == null ) {
-	            System.out.println("Unable to find weather data for: " + cityName);
+	        JOptionPane.showMessageDialog(null, "Unable to find weather data for: " + cityName);
 	        } else {
-	            System.out.println(cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
+	            JOptionPane.showMessageDialog(null, cityName + " is " + datum.weatherSummary + " with a temperature of " + datum.temperatureF + " F");
 	            }
 		}
+		if(e.getSource()==b2) {
+			String weather= JOptionPane.showInputDialog( "Want to stay in the sun? Just, enter 'clear' and you'll see where in San Diego its sunny.");
+			ArrayList<String> al = new ArrayList<String>();
+			for (String key : weatherData.keySet()) {
+			     if(weatherData.get(key).weatherSummary.equals(weather)) {
+			    	al.add(key);
+			    
+			     }
+			    System.out.println(key);
+			    System.out.println(weatherData.get(key).weatherSummary);
+			} 
+			 if(al.size()>0) {
+		    	 JOptionPane.showMessageDialog(null, al);
+		     }
+			 else{
+				   JOptionPane.showMessageDialog(null, "Unable to find weather data for: " + weather);
+			 }
+		}
+		
 	}
 }

@@ -12,7 +12,10 @@ import javax.swing.JPanel;
  * See instructions in the CaliforniaWeather.java class
  */
 public class CaliforniaWeatherRunner implements ActionListener {
-    
+    public static void main(String[] args) {
+		CaliforniaWeather cw =new CaliforniaWeather();
+		cw.start();
+	}
    
     CaliforniaWeatherRunner(){
     
