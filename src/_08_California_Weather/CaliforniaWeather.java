@@ -74,7 +74,7 @@ public class CaliforniaWeather implements ActionListener {
 			String cityName= JOptionPane.showInputDialog( "Input the part of San Diego you want to know the weather of.");
 			//cityName = Utilities.capitalizeWords( cityName);
 	        WeatherData datum = weatherData.get(cityName);
-	        
+	      
 	        if( datum == null ) {
 	        JOptionPane.showMessageDialog(null, "Unable to find weather data for: " + cityName);
 	        } else {
@@ -99,6 +99,26 @@ public class CaliforniaWeather implements ActionListener {
 				   JOptionPane.showMessageDialog(null, "Unable to find weather data for: " + weather);
 			 }
 		}
-		
+		if(e.getSource()==b3) {
+			String min= JOptionPane.showInputDialog( "Enter min temp");
+			String max= JOptionPane.showInputDialog( "Enter max temp");
+			int min2=Integer.parseInt(min);
+		 	int max2=Integer.parseInt(max);
+		 	ArrayList<String> al = new ArrayList<String>();
+		 	for (String key : weatherData.keySet()) {
+		 		WeatherData infos = weatherData.get(key);
+		 		if(infos.temperatureF>=min2 && infos.temperatureF<=max2) {
+		 			al.add(key);
+		 		}
+			} 
+		 	
+			     if(al.size()>0) {
+			    	 JOptionPane.showMessageDialog(null, al);
+			     }
+				 else{
+					   JOptionPane.showMessageDialog(null, "Sorry no cities are within that range :(");
+				 }
+		}
 	}
+
 }
