@@ -56,7 +56,7 @@ public class WorldClocks implements ActionListener {
 
     JTextArea ta;
     
-    String city2;
+    String cityName;
     String ds;
     String ts;
     
@@ -64,7 +64,7 @@ public class WorldClocks implements ActionListener {
         clockUtil = new ClockUtilities();
 
         // The format for the city must be: city, country (all caps)
-        city = "Atlanta, US";
+        city = "Paris, FR";
         timeZone = clockUtil.getTimeZoneFromCityName(city);
         
         Calendar calendar = Calendar.getInstance(timeZone);
@@ -90,13 +90,12 @@ public class WorldClocks implements ActionListener {
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------
       
         cu = new ClockUtilities();
-       
-        String cityName = JOptionPane.showInputDialog("enter a city name");
+       hm= new HashMap<String, TimeZone>();
+        cityName = JOptionPane.showInputDialog("enter a city name");
         TimeZone zone = cu.getTimeZoneFromCityName(cityName);
         hm.put(cityName, zone);
         
-        city2 = "cityName";
-        tz = cu.getTimeZoneFromCityName(city2);
+        tz = cu.getTimeZoneFromCityName(cityName);
         
         Calendar c2 = Calendar.getInstance(tz);
         String month2 = c2.getDisplayName(Calendar.MONTH, Calendar.LONG, Locale.getDefault());
@@ -105,7 +104,7 @@ public class WorldClocks implements ActionListener {
         
         ta = new JTextArea();
         panel.add(ta);
-        ta.setText(city2 + "\n" + ds);
+        ta.setText(cityName + "\n" + ds);
         city2Timer = new Timer(1000, this);
         city2Timer.start();
     }
@@ -115,22 +114,24 @@ public class WorldClocks implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent arg0) {
-        Calendar c = Calendar.getInstance(timeZone);
+       if(arg0.getSource()== city1Timer) {
+    	Calendar c = Calendar.getInstance(timeZone);
         String militaryTime = c.get(Calendar.HOUR_OF_DAY) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND);
         String twelveHourTime = " [" + c.get(Calendar.HOUR) + ":" + c.get(Calendar.MINUTE) + ":" + c.get(Calendar.SECOND) + "]";
         timeStr = militaryTime + twelveHourTime;
         
         textArea.setText(city + "\n" + dateStr + "\n" + timeStr);
         frame.pack();
-        
-        
+       }
+        if(arg0.getSource()== city2Timer) {
         Calendar c2 = Calendar.getInstance(tz);
         String militaryTime2 = c2.get(Calendar.HOUR_OF_DAY) + ":" + c2.get(Calendar.MINUTE) + ":" + c2.get(Calendar.SECOND);
         String twelveHourTime2 = " [" + c2.get(Calendar.HOUR) + ":" + c2.get(Calendar.MINUTE) + ":" + c2.get(Calendar.SECOND) + "]";
         ts = militaryTime2 + twelveHourTime2;
         
-        ta.setText(city2 + "\n" + ds + "\n" + ts);
+        ta.setText(cityName + "\n" + ds + "\n" + ts);
         frame.pack();
+    }
     }
 }
 
